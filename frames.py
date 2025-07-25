@@ -13,42 +13,14 @@ def render_dog(eyes, emotion_indicator):
     print(dog_frame)
 
 
+dead_eyes = "x"
+dead_indicator = "X"
+
 happy_eyes = "^"
-happy_emotion_indicator = ""
+happy_indicator = ""
 
-dog_no_expression = """
-   /\\_/\\
-  ( o.o )
-   \\___/
-   |   |
-  /|   |\\
-  __________
-"""
+no_expression_eyes = "o"
+no_expression_indicator = ""
 
-dog_happy = """
-   /\\_/\\
-  ( ^.^ )
-   \\___/
-   |   |
-  /|   |\\
-  __________
-"""
-
-dog_scared = """
-     !
-   /\\_/\\
-  ( 0.0 )
-   \\___/
-   |   |
-  /|   |\\
-  __________
-"""
-
-dog_dead = """
-   /\\_/\\
-  ( x.x )
-   \\___/
-   |   |
-  /|   |\\
-  __________
-"""
+scared_eyes = "0"
+scared_indicator = "!"
