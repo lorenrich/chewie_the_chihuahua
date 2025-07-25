@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Chewie the Chihuahua
 
 **TLDR (too long didn't read)**
@@ -22,3 +23,7 @@ need...
 This game is based on my actual Chihuahua who is terrified of everything.  Every trigger is a real event she's encountered.
 
 
+=======
+# chewie_the_chihuahua
+Chewie is a command line Chihuahua who struggles with anxiety.  Take her for a walk and successfully navigate the anxiety triggers she encounters, but be careful!  Every choice has consequences, some better than others.
+>>>>>>> 49b674284cf08d8366bc32f53cc9bbe084d91385
