@@ -1,26 +1,85 @@
-# Dog frame, no expression
+import os
+import sys
+from constants import *
+from dialogue import *
 
-def render_dog(eyes, emotion_indicator):
+
+def render_dog(dog_state):
+    eyes = dog_states[dog_state]["eyes"]
+    indicator = dog_states[dog_state]["indicator"]
+
     dog_frame = f"""
-      {emotion_indicator}
-    /\\_/\\
-   ( {eyes}.{eyes} )
-    \\___/
-    |   |
-   /|   |\\
-    __________
+  {indicator}
+ /\\_/\\
+ ( {eyes}.{eyes} )
+ \\___/
+  |   |
+ /|   |\\
     """
-    print(dog_frame)
+
+    return dog_frame
 
 
-dead_eyes = "x"
-dead_indicator = "X"
+class GameFrame:
+    def __init__(self, SCREEN_WIDTH, SCREEN_HEIGHT):
+        self.SCREEN_WIDTH = SCREEN_WIDTH
+        self.SCREEN_HEIGHT = SCREEN_HEIGHT
 
-happy_eyes = "^"
-happy_indicator = ""
+        self.content = []
 
-no_expression_eyes = "o"
-no_expression_indicator = ""
+    def add_line(self, text: str="", center=True):
+        self.content.append(text.center(self.SCREEN_WIDTH))
 
-scared_eyes = "0"
-scared_indicator = "!"
+    def add_padding(self, lines=1):
+        for i in range(0, lines):
+          self.add_line("")
+
+    def add_multi_line_block(self, text_block: str, center=False):
+        lines = text_block.split('\n')
+        for line in lines:
+            self.add_line(line, center=center)
+
+    def clear_screen():
+      # Clear screen according to user's operating system
+      if os.name == 'nt':
+          os.system('cls')
+      else:
+          os.system('clear')
+
+    def render(self):
+        for item in self.content:
+            print(item)
+        
+        # Clear content list after rendering
+        self.content = []
+
+def clear_screen():
+      # Clear screen according to user's operating system, callable outside of GameFrame class
+      if os.name == 'nt':
+          os.system('cls')
+      else:
+          os.system('clear')
+
+
+def show_title_frame():
+    # Not currently used until I fix spacing issue
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    frame.add_padding(2)
+    frame.add_multi_line_block(text_block=render_dog_title("title"), center=False)
+    frame.add_padding(2)
+    frame.render()
+
+    input()
+
+def show_game_intro_frame(dog_state):
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    frame.add_padding(2)
+    frame.add_multi_line_block(text_block=render_dog(dog_state), center=True)
+    frame.render()
+
+def render_text_frame(text):
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    frame.add_padding(2)
+    frame.add_multi_line_block(text_block=character_speech(text, DOG_SPEECH_SPEED), center=True)
+    frame.add_padding(2)
+    frame.render()

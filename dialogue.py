@@ -7,7 +7,7 @@ def character_speech(text, DOG_SPEECH_SPEED):
             time.sleep(DOG_SPEECH_SPEED * 10)
         print(character, end="", flush=True)
         time.sleep(DOG_SPEECH_SPEED)
-    print()
+    return
 
 # Text variables for character speech
 intro = "Hi. I'm Chewie. \nI'm a 5-pound Chihuahua who struggles with anxiety. It's hard not to be afraid when everything is bigger " \

@@ -6,19 +6,28 @@ from dialogue import *
 from frames import *
 
 def main():
+    # Show title screen (brute force method for now)
+    print(dog_title_screen)
+    input()
+
     # Draw dog and intro dialogue to the screen
     clear_screen()
-    render_dog(happy_eyes, happy_indicator)
-    character_speech(intro, DOG_SPEECH_SPEED)
+    show_game_intro_frame(dog_state="happy")
+    render_text_frame(text=intro)
+    time.sleep(0.1)
     clear_screen()
 
-    render_dog(scared_eyes, scared_indicator)
-    character_speech(intro_2, DOG_SPEECH_SPEED)
+    # TODO left off here, it doesn't matter if you start with happy or scared, the following one throws an error where lines in
+    # TODO multi_line_block is getting passed NoneType
+    show_game_intro_frame(dog_state="scared")
+    render_text_frame(text=intro_2)
+    time.sleep(0.1)
     clear_screen()
 
-    render_dog(no_expression_eyes, no_expression_indicator)
-    character_speech(intro_3, DOG_SPEECH_SPEED)
-    clear_screen()
+    show_game_intro_frame(dog_state="none")
+    render_text_frame(text=intro_3)
+    time.sleep(0.1)
+    input()
 
 
 

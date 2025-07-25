@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Chewie the Chihuahua
 
 **TLDR (too long didn't read)**
