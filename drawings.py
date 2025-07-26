@@ -23,55 +23,40 @@ def render_dog(dog_state):
   |   |
  /|   |\\
     """
-
     return dog_frame
 
 # Dog drawings, actioned
-walking_dog_frames = [
-"""
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      /|    |\\
-      __________
-    """,
-"""
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      |\\   /
-      __________
-    """
-]
-
-walking_dog_frames2 = [
-    """
-   /\\_/\\
-  ( o.o )
+'''
+walking_dog = [
+    f"""
+  {indicator}
+ /\\_/\\
+ ( {eyes}.{eyes} )
    \\___/
    |   |
   /|   |\\
     """,
-    """
-   /\_/\\
-  ( o.o )
+    f"""
+  {indicator}
+ /\\_/\\
+ ( {eyes}.{eyes} )
    \\___/
    |   |
   /    |\\
     """,
-    """
-   /\\_/\\
-  ( o.o )
+    f"""
+  {indicator}
+ /\\_/\\
+ ( {eyes}.{eyes} )
    \\___/
    |   |
   |\\   /
     """
 ]
+'''
 
 # Dog reactions to triggers, static and actioned
-dog_ray_gun_frames = [
+ray_gun = [
     """
        /\\_/\\
       ( o.o )
@@ -98,7 +83,7 @@ dog_ray_gun_frames = [
     """
 ]
 
-dog_barking_frames = [
+barking = [
     """
        /\\_/\\
       ( o.o )
@@ -126,7 +111,7 @@ dog_barking_frames = [
 ]
 
 # Trigger frames
-blowing_leaf_frames = [
+blowing_leaf = [
     """
        /\\
     |\|  |/|
@@ -150,7 +135,7 @@ blowing_leaf_frames = [
     """
 ]
 
-firework_frames = [
+fireworks = [
     """
            
             
@@ -180,7 +165,7 @@ firework_frames = [
     """
 ]
 
-bird_frames = [
+bird = [
     """
     
       __   __

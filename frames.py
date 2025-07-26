@@ -3,6 +3,7 @@ import sys
 from constants import *
 from dialogue import *
 from drawings import *
+from game_stats import *
 
 
 class GameFrame:
@@ -37,8 +38,8 @@ class GameFrame:
             print(character, end="", flush=True)
             time.sleep(DOG_SPEECH_SPEED)
 
-    def add_game_stat(self, stat: str="", center=False):
-        self.content.append(stat)
+    def add_game_stat(self, type: str="",  center=False):
+        self.content.append(type)
 
     def clear_screen():
       """Clear screen according to user's operating system"""
@@ -97,10 +98,10 @@ def show_gameplay_frame(trigger, dog_state):
     
     # Top of frame with game stats
     frame.add_line(text=game_outline)
-    frame.add_game_stat(stat="Progress ")
-    frame.add_game_stat(stat="Anxiety ")
-    frame.add_game_stat(stat="Courage ")
-    frame.add_padding(1)
+    frame.add_game_stat(type=progress_bar)
+    frame.add_game_stat(type=anxiety_bar)
+    frame.add_game_stat(type=courage_bar)
+    frame.add_padding(2)
 
     # Game event (trigger)
     frame.add_multi_line_block(text_block="trigger placeholder", center=True)
