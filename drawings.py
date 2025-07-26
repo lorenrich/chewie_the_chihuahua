@@ -11,7 +11,6 @@ dog_title_screen = f"""
       \\___/
       |   |       Press any key to begin
      /|   |\\
-______________________________________
     """
 
 def render_dog(dog_state):
@@ -33,7 +32,8 @@ def render_dog(dog_state):
 def get_walking_frames(dog_state):
     eyes = dog_states[dog_state]['eyes']
     indicator = dog_states[dog_state]["indicator"]
-    indent = " " * (SCREEN_WIDTH// 2)
+    indent_calc = (SCREEN_WIDTH //2) - 2
+    indent = " " * indent_calc
     return [
     f"""
 {indent}     {indicator}
@@ -117,25 +117,39 @@ barking = [
     """
 ]
 
-# Trigger frames
+# Trigger frames, static
+triggers_static = {
+    'none': '',
+    'fireworks': """
+                       \\    |    /       \\ /
+                        \\   |   /        / \\
+    \\ /      \\  |  /
+      / \\    ----   ----
+             /  |  \\
+             /   |   \\
+              /    |    \\ 
+    """
+}
+
+# Trigger frames, animated
 blowing_leaf = [
     """
        /\\
-    |\|  |/|
+    |\\|  |/|
     |      |
      \\____/
         |
     """,
     """
          /\\
-      |\|  |/|
+      |\\|  |/|
       |      |
        \\____/
           |
     """,
     """
            /\\
-        |\|  |/|
+        |\\|  |/|
         |      |
          \\____/
             |

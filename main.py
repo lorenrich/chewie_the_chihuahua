@@ -36,6 +36,7 @@ def main():
         '''
         # Show title screen (brute force method for now)
         print(dog_title_screen)
+        show_game_outline()
         wait_for_key()
 
         # Draw dog and intro dialogue to the screen
@@ -65,15 +66,16 @@ def main():
 
             # Begin gameplay
             clear_screen()
-            show_gameplay_frame_static(trigger="placeholder", dog_state="none")
+            show_gameplay_frame_static(trigger_static='none', dog_state="none")
 
             # Start walking
             clear_screen()
             animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, trigger='placeholder')
 
-            #Try running
+            # Play trigger #1
             clear_screen()
-            animate_dog(dog_state='scared', animation='running', duration=RUNNING_STEPS, speed=RUNNING_SPEED, trigger='placeholder')
+            show_gameplay_frame_static(trigger_static='fireworks', dog_state="scared")
+            show_game_dialogue(text=trigger_dialogue['fireworks'])
 
             break
 

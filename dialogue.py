@@ -12,9 +12,9 @@ intro_2 = "...the thought of it terrifies me.\nIf I face my fears appropriately,
 intro_3 = f"I'm going to let you make the decisions...Are you ready to go?\n\nPress {GAME_KEYS['start']} to begin or {GAME_KEYS['quit']} to quit"
 
 # Dog  dialogue reactions to triggers
-trigger_reactions = {
+trigger_dialogue = {
     "blowing_leaf": "Oh...a leaf blowing in the wind...coming straight for me...",
-    "firework": "HOLY CRAP!  Fireworks!!!!!",
+    "fireworks": "HOLY CRAP!  Fireworks!!!!!",
     "bird": "Is that a hawk?  Man...he looks hungry...",
     "child": "Oh no, small child. \nPlease don't want to pet me.  Please don't want to pet me. Please don't want to pet me.",
     "human": "Shoot...scary human...",

@@ -112,20 +112,20 @@ def show_game_dialogue(text):
     frame.add_padding(1)
     frame.character_speech(text, DOG_SPEECH_SPEED, center=False)
 
-def show_gameplay_frame_static(trigger, dog_state):
+def show_gameplay_frame_static(trigger_static, dog_state):
     """Standard game screen, static dog"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    trigger_drawing = triggers_static[trigger_static]
     
     # Top of frame with game stats
     frame.add_line(text=game_outline)
     frame.add_game_stat(type=progress_bar)
     frame.add_game_stat(type=anxiety_bar)
     frame.add_game_stat(type=courage_bar)
-    frame.add_padding(2)
+    frame.add_padding(1)
 
     # Game event (trigger)
-    frame.add_multi_line_block(text_block="trigger placeholder", center=True)
-    frame.add_padding(6) # Change back to 1 once you start passing actual trigger drawings
+    frame.add_multi_line_block(text_block=trigger_drawing, center=True)
 
     # Dog
     frame.add_padding(1)
@@ -147,7 +147,7 @@ def show_gameplay_frame_animated(trigger, dog_state):
     frame.add_padding(2)
 
     # Game event (trigger)
-    frame.add_multi_line_block(text_block="trigger placeholder", center=True)
+    frame.add_multi_line_block(text_block="", center=True)
     frame.add_padding(7) # Change back to 1 once you start passing actual trigger drawings
 
     # Because we have to print each frame of the animation, we will call the function to animate the dog separately to prevent rendering it twice
