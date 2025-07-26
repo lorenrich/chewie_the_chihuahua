@@ -1,6 +1,14 @@
 SCREEN_WIDTH = 65
 SCREEN_HEIGHT = 25
 
+GAME_KEYS = {
+    'start': 'y',
+    'quit': 'q',
+    'option_a': 'a',
+    'option_b': 'b',
+    'option_c': 'c'
+}
+
 WALKING_SPEED = 0.5
 WALKING_STEPS = 10
 
@@ -17,113 +25,8 @@ dog_states = {
     "dead": {"eyes": "x", "indicator": "X"}
 }
 
-dog_title_screen = f"""
 
-      /\\_/\\
-     ( ^.^ )      Chewie the Chihuahua
-      \\___/
-      |   |       Press ENTER to begin
-     /|   |\\
-______________________________________
-    """
-
-walking_dog_frames = [
-"""
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      /|    |\\
-      __________
-    """,
-"""
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      |\\   /
-      __________
-    """
-]
-
-dog_ray_gun_frames = [
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|--
-      /|   |
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|-- pew!
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|-- pew! pew!
-      /|   |\\
-      __________
-    """
-]
-
-dog_barking_frames = [
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/ -- arf!
-       |   |
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/ -- arf! arf!
-       |   |
-      /|   |\\
-      __________
-    """
-]
-
-walking_dog_frames2 = [
-    """
-   /\\_/\\
-  ( o.o )
-   \\___/
-   |   |
-  /|   |\\
-    """,
-    """
-   /\_/\\
-  ( o.o )
-   \\___/
-   |   |
-  /    |\\
-    """,
-    """
-   /\\_/\\
-  ( o.o )
-   \\___/
-   |   |
-  |\\   /
-    """
-]
-
+# TODO Migrate this to a single function?
 def walking_dog(frames, steps=0):
     for i in range(0, steps):
         for frame in frames:
