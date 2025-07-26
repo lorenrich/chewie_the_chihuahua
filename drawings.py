@@ -29,35 +29,35 @@ def render_dog(dog_state):
     return dog_frame
 
 
-
 # Dog drawings, actioned; formatted as functions to allow successful passing of emotions to each action
 def get_walking_frames(dog_state):
     eyes = dog_states[dog_state]['eyes']
     indicator = dog_states[dog_state]["indicator"]
+    indent = " " * (SCREEN_WIDTH// 2)
     return [
     f"""
-     {indicator}
-   /\\_/\\
-  ( {eyes}.{eyes} )
-   \\___/
-   |   |
-  /|   |\\
+{indent}     {indicator}
+{indent}   /\\_/\\
+{indent}  ( {eyes}.{eyes} )
+{indent}   \\___/
+{indent}   |   |
+{indent}  /|   |\\
     """,
     f"""
-     {indicator}
-   /\\_/\\
-  ( {eyes}.{eyes} )
-   \\___/
-   |   |
-  /    |\\
+{indent}     {indicator}
+{indent}   /\\_/\\
+{indent}  ( {eyes}.{eyes} )
+{indent}   \\___/
+{indent}   |   |
+{indent}  /    |\\
     """,
     f"""
-     {indicator}
-   /\\_/\\
-  ( {eyes}.{eyes} )
-   \\___/
-   |   |
-  |\\   /
+{indent}     {indicator}
+{indent}   /\\_/\\
+{indent}  ( {eyes}.{eyes} )
+{indent}   \\___/
+{indent}   |   |
+{indent}  |\\   /
     """
 ]
 

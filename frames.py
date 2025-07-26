@@ -22,6 +22,7 @@ def animate_dog(dog_state, animation, duration, speed, trigger):
                 os.system('clear')
             show_gameplay_frame_animated(trigger, dog_state)
             print(frame)
+            show_game_outline()
             time.sleep(speed)
 
 
@@ -147,7 +148,7 @@ def show_gameplay_frame_animated(trigger, dog_state):
 
     # Game event (trigger)
     frame.add_multi_line_block(text_block="trigger placeholder", center=True)
-    frame.add_padding(6) # Change back to 1 once you start passing actual trigger drawings
+    frame.add_padding(7) # Change back to 1 once you start passing actual trigger drawings
 
     # Because we have to print each frame of the animation, we will call the function to animate the dog separately to prevent rendering it twice
 

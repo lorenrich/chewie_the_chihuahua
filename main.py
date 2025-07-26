@@ -69,8 +69,11 @@ def main():
 
             # Start walking
             clear_screen()
-            animate_dog(dog_state='scared', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, trigger='placeholder')
-            show_game_outline()
+            animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, trigger='placeholder')
+
+            #Try running
+            clear_screen()
+            animate_dog(dog_state='scared', animation='running', duration=RUNNING_STEPS, speed=RUNNING_SPEED, trigger='placeholder')
 
             break
 

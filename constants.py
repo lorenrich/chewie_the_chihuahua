@@ -9,11 +9,11 @@ GAME_KEYS = {
     'option_c': 'c'
 }
 
-WALKING_SPEED = 0.5
-WALKING_STEPS = 10
+WALKING_SPEED = 0.4
+WALKING_STEPS = 5
 
-RUNNING_SPEED = 0.2
-RUNNING_STEPS = 15
+RUNNING_SPEED = 0.1
+RUNNING_STEPS = 7
 
 DOG_SPEECH_SPEED = 0.01  # Once ready for actual gameplay, change to 0.05 
 
