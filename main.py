@@ -33,7 +33,7 @@ def wait_for_key():
 
 def main():
     while True:
-        
+        '''
         # Show title screen (brute force method for now)
         print(dog_title_screen)
         wait_for_key()
@@ -48,7 +48,7 @@ def main():
         show_game_intro_frame(dog_state="scared")
         show_game_dialogue(text=intro_2)
         time.sleep(1)
-        
+        '''
 
         # Ask user to begin gameplay
         clear_screen()
@@ -65,7 +65,12 @@ def main():
 
             # Begin gameplay
             clear_screen()
-            show_gameplay_frame(trigger="placeholder", dog_state="none") 
+            show_gameplay_frame_static(trigger="placeholder", dog_state="none")
+
+            # Start walking
+            clear_screen()
+            animate_dog(dog_state='scared', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, trigger='placeholder')
+            show_game_outline()
 
             break
 

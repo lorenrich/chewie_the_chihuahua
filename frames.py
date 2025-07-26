@@ -5,6 +5,25 @@ from dialogue import *
 from drawings import *
 from game_stats import *
 
+def animate_dog(dog_state, animation, duration, speed, trigger):
+    eyes = dog_states[dog_state]['eyes']
+    indicator = dog_states[dog_state]["indicator"]
+
+    if animation == "walking":
+        frames = get_walking_frames(dog_state)
+    elif animation == "running":
+        frames = get_walking_frames(dog_state)
+
+    for i in range(0, duration):
+        for frame in frames:
+            if os.name == 'nt':
+                os.system('cls')
+            else:
+                os.system('clear')
+            show_gameplay_frame_animated(trigger, dog_state)
+            print(frame)
+            time.sleep(speed)
+
 
 class GameFrame:
     def __init__(self, SCREEN_WIDTH, SCREEN_HEIGHT):
@@ -92,8 +111,8 @@ def show_game_dialogue(text):
     frame.add_padding(1)
     frame.character_speech(text, DOG_SPEECH_SPEED, center=False)
 
-def show_gameplay_frame(trigger, dog_state):
-    """Standard game screen"""
+def show_gameplay_frame_static(trigger, dog_state):
+    """Standard game screen, static dog"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     
     # Top of frame with game stats
@@ -115,17 +134,21 @@ def show_gameplay_frame(trigger, dog_state):
 
     frame.render()
 
+def show_gameplay_frame_animated(trigger, dog_state):
+    """Standard game screen, animated dog and trigger"""
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    
+    # Top of frame with game stats
+    frame.add_line(text=game_outline)
+    frame.add_game_stat(type=progress_bar)
+    frame.add_game_stat(type=anxiety_bar)
+    frame.add_game_stat(type=courage_bar)
+    frame.add_padding(2)
 
-def trigger(trigger_frame, delay=0.00):
-    # TODO not worked into the flow of framing yet
-    for frame in trigger_frame:
-        os.system('cls')
-        print(frame)
-        time.sleep(delay)
+    # Game event (trigger)
+    frame.add_multi_line_block(text_block="trigger placeholder", center=True)
+    frame.add_padding(6) # Change back to 1 once you start passing actual trigger drawings
 
-def dog_walking():
-    # TODO not worked into the flow of framing yet
-    for i in range(10):  # Repeat 10 times
-        for frame in frames:
-            print(frame)
-            time.sleep(0.5)
+    # Because we have to print each frame of the animation, we will call the function to animate the dog separately to prevent rendering it twice
+
+    frame.render()

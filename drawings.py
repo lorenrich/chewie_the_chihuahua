@@ -1,4 +1,7 @@
+import os
+import time
 from constants import *
+
 
 # Dog drawings, static
 dog_title_screen = f"""
@@ -25,35 +28,39 @@ def render_dog(dog_state):
     """
     return dog_frame
 
-# Dog drawings, actioned
-'''
-walking_dog = [
+
+
+# Dog drawings, actioned; formatted as functions to allow successful passing of emotions to each action
+def get_walking_frames(dog_state):
+    eyes = dog_states[dog_state]['eyes']
+    indicator = dog_states[dog_state]["indicator"]
+    return [
     f"""
-  {indicator}
- /\\_/\\
- ( {eyes}.{eyes} )
+     {indicator}
+   /\\_/\\
+  ( {eyes}.{eyes} )
    \\___/
    |   |
   /|   |\\
     """,
     f"""
-  {indicator}
- /\\_/\\
- ( {eyes}.{eyes} )
+     {indicator}
+   /\\_/\\
+  ( {eyes}.{eyes} )
    \\___/
    |   |
   /    |\\
     """,
     f"""
-  {indicator}
- /\\_/\\
- ( {eyes}.{eyes} )
+     {indicator}
+   /\\_/\\
+  ( {eyes}.{eyes} )
    \\___/
    |   |
   |\\   /
     """
 ]
-'''
+
 
 # Dog reactions to triggers, static and actioned
 ray_gun = [
