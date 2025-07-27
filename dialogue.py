@@ -20,3 +20,8 @@ trigger_dialogue = {
     "human": "Shoot...scary human...",
     "other_dog": "Hello other dog.  No, I don't want to be your friend."
 }
+
+reaction_menu = {
+    'bark': 'Bark your head off',
+    'ray_gun': """Shoot 'em with a ray gun"""
+}

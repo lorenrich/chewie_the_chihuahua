@@ -30,6 +30,8 @@ def get_user_input(valid_keys=None):
 def wait_for_key():
     get_single_keypress()
 
+game_state = GameState()
+
 
 def main():
     while True:
@@ -73,20 +75,28 @@ def main():
             animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED)
 
             # Play trigger #1
+            trigger = game_state.generate_new_trigger()
             clear_screen()
-            animate_trigger(animation='fireworks', speed=0.75)
+            animate_trigger(animation=trigger, speed=0.75)
             clear_screen()
-            show_gameplay_frame_static(trigger_static='fireworks', dog_state='scared')
-            show_game_dialogue(text=trigger_dialogue['fireworks'])
+            show_gameplay_frame_static(trigger_static=trigger, dog_state='scared')
+            show_game_dialogue(text=trigger_dialogue[trigger])
 
-            # TODO Ask user to choose reaction
+            # Ask user to choose reaction
+            menu, option_a, option_b = game_state.generate_new_reactions()
+            show_game_dialogue(text=menu)
 
-            # Play reaction
-            time.sleep(2)
-            clear_screen()
-            animate_dog(dog_state='none', animation='barking', duration=BARKING_LOOP, speed=BARKING_SPEED)
+            choice = get_user_input([GAME_KEYS['option_a'], GAME_KEYS['option_b']])
+
+            if choice == GAME_KEYS['option_a']:
+                time.sleep(2)
+                clear_screen()
+                animate_dog(dog_state='none', animation=option_a, duration=2, speed=0.75)
+            elif choice == GAME_KEYS['option_b']:
+                time.sleep(2)
+                clear_screen()
+                animate_dog(dog_state='none', animation=option_b, duration=2, speed=0.75)
             
-
 
             break
 

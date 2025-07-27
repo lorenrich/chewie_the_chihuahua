@@ -15,6 +15,8 @@ def animate_dog(dog_state, animation, duration, speed):
         frames = get_walking_frames(dog_state)
     elif animation == 'barking':
         frames = dog_reactions['barking']
+    elif animation == 'ray_gun':
+        frames = dog_reactions['ray_gun']
 
     for i in range(0, duration):
         for frame in frames:
