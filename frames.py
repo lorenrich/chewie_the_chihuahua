@@ -25,6 +25,11 @@ def animate_dog(dog_state, animation, duration, speed, trigger):
             show_game_outline()
             time.sleep(speed)
 
+def get_indentation_need(text_block, indent_dict, base_indent=0):
+    """Manually calculate how to center frame drawings for consistency on screen"""
+    line_length = text_block.split('\n')
+    return indent_dict.get(line_length, " " * base_indent)
+
 
 class GameFrame:
     def __init__(self, SCREEN_WIDTH, SCREEN_HEIGHT):

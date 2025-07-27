@@ -1,4 +1,4 @@
-SCREEN_WIDTH = 75
+SCREEN_WIDTH = 76
 SCREEN_HEIGHT = 25
 
 GAME_KEYS = {
@@ -24,4 +24,5 @@ dog_states = {
     "scared": {"eyes": "0", "indicator": "!"},
     "dead": {"eyes": "x", "indicator": "X"}
 }
+
 

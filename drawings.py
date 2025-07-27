@@ -117,19 +117,22 @@ barking = [
     """
 ]
 
+
+
 # Trigger frames, static
 triggers_static = {
     'none': '',
-    'fireworks': """
-                       \\    |    /       \\ /
-                        \\   |   /        / \\
-    \\ /      \\  |  /
-      / \\    ----   ----
-             /  |  \\
-             /   |   \\
-              /    |    \\ 
+    'fireworks': f"""
+                \\     |    /       \\ /                                    
+                 \\    |   /        / \\                                    
+      \\ /         \\   |  /                                                
+      / \\        ----   ----                                              
+                   /  |  \\                                                
+                  /   |   \\  BOOM!                                        
+                 /    |    \\                                              
     """
 }
+
 
 # Trigger frames, animated
 blowing_leaf = [
