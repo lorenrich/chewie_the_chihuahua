@@ -81,7 +81,7 @@ def main():
         clear_screen()
         game_state.update_progress(amount=25)
         show_gameplay_frame_static(trigger_static='none', dog_state='happy', game_state=game_state)
-        show_game_dialogue(text="Wow! I feel a lot better!")
+        show_game_dialogue(text=game_state.generate_random_response())
         time.sleep(1)
 
         return "continue"

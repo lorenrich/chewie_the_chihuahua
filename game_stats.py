@@ -17,6 +17,12 @@ class GameState:
         self.current_dog_event = None
         self.available_triggers = ['fireworks', 'bird']
         self.available_reactions = ['bark', 'ray_gun']
+        self.post_reaction_dialogue = [
+    """Wow!  I feel so much better!""",
+    """Glad that's over...""",
+    """Thanks...did I mention how much I hate walks?""",
+    """Good grief"""
+]
         self.progress = 0
         self.anxiety = 25
         self.courage = 25
@@ -41,6 +47,10 @@ class GameState:
         menu += f"B. {reaction_menu[reaction_list[1]]}\n"
         
         return menu, reaction_list[0], reaction_list[1]
+    
+    def generate_random_response(self):
+        """Choose a dialogue response after each trigger"""
+        self.response = random.choice(self.post_reaction_dialogue)
     
     def update_progress(self, amount):
         self.progress += amount
