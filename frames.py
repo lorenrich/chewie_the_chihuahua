@@ -5,7 +5,7 @@ from dialogue import *
 from drawings import *
 from game_stats import *
 
-def animate_dog(dog_state, animation, duration, speed, trigger):
+def animate_dog(dog_state, animation, duration, speed):
     eyes = dog_states[dog_state]['eyes']
     indicator = dog_states[dog_state]["indicator"]
 
@@ -13,6 +13,8 @@ def animate_dog(dog_state, animation, duration, speed, trigger):
         frames = get_walking_frames(dog_state)
     elif animation == "running":
         frames = get_walking_frames(dog_state)
+    elif animation == 'barking':
+        frames = dog_reactions['barking']
 
     for i in range(0, duration):
         for frame in frames:

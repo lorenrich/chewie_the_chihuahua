@@ -70,7 +70,7 @@ def main():
 
             # Start walking
             clear_screen()
-            animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, trigger='placeholder')
+            animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED)
 
             # Play trigger #1
             clear_screen()
@@ -78,6 +78,15 @@ def main():
             clear_screen()
             show_gameplay_frame_static(trigger_static='fireworks', dog_state='scared')
             show_game_dialogue(text=trigger_dialogue['fireworks'])
+
+            # TODO Ask user to choose reaction
+
+            # Play reaction
+            time.sleep(2)
+            clear_screen()
+            animate_dog(dog_state='none', animation='barking', duration=BARKING_LOOP, speed=BARKING_SPEED)
+            
+
 
             break
 

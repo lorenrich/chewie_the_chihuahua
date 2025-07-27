@@ -59,6 +59,34 @@ def get_walking_frames(dog_state):
     """
 ]
 
+dog_reactions = {
+    'barking': [f"""
+                                                                                                   
+                                   /\\_/\\                                                
+                                  ( o.o )                                               
+                                   \\___/  --                                            
+                                   |   |                                                
+                                  /|   |\\                                               
+    """,
+    """
+                                                                                                   
+                                   /\\_/\\                                                
+                                  ( o.o )                                               
+                                   \\___/  --arf!                                        
+                                   |   |                                                
+                                  /|   |\\                                               
+    """,
+    """
+                                                                                                   
+                                   /\\_/\\                                                
+                                  ( o.o )                                               
+                                   \\___/  --arf! arf!                                   
+                                   |   |                                                
+                                  /|   |\\                                               
+    """
+    ]
+}
+
 
 # Dog reactions to triggers, static and actioned
 ray_gun = [
@@ -88,32 +116,6 @@ ray_gun = [
     """
 ]
 
-barking = [
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/ -- arf!
-       |   |
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/ -- arf! arf!
-       |   |
-      /|   |\\
-      __________
-    """
-]
 
 
 
@@ -185,7 +187,7 @@ triggers_animated = {
 
 
 
-
+# TODO to be integrated into their respective functions
 
 blowing_leaf = [
     """

@@ -25,4 +25,6 @@ dog_states = {
     "dead": {"eyes": "x", "indicator": "X"}
 }
 
+BARKING_LOOP = 2
+BARKING_SPEED = 0.3
 
