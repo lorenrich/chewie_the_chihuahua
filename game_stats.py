@@ -50,12 +50,16 @@ class GameState:
         self.anxiety += amount
         if self.anxiety < 0:
             self.anxiety = 0
+        elif self.anxiety > 100:
+            self.anxiety = 100
         return self.anxiety
     
     def update_courage(self, amount):
         self.courage += amount
         if self.courage < 0:
             self.courage = 0
+        elif self.courage > 100:
+            self.courage = 100
         return self.courage
     
     def get_progress_bar(self):
@@ -73,7 +77,7 @@ class GameState:
     
     def reset_anxiety(self):
         """Randomly select a starting point for anxiety.  Not every day is a good day"""
-        self.anxiety = random.randint(1, 5)
+        self.anxiety = random.randint(0, 50)
         return self.anxiety
     
     def reset_courage(self):

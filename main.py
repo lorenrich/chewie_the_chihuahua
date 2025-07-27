@@ -35,7 +35,7 @@ game_state = GameState()
 
 
 def main():
-    while True:
+    while game_state.progress < 100 and game_state.anxiety < 100:
         '''
         # Show title screen (brute force method for now)
         print(dog_title_screen)
@@ -88,8 +88,12 @@ def main():
                 clear_screen()
                 animate_trigger(animation=trigger, speed=0.75, game_state=game_state)
                 clear_screen()
-                game_state.update_progress(amount=25)
                 game_state.update_anxiety(amount=trigger_stats[trigger])
+
+                # Check anxiety levels
+                if game_state.anxiety >= 100:
+                    return "anxiety_too_high"
+
                 show_gameplay_frame_static(trigger_static=trigger, dog_state='scared', game_state=game_state)
                 show_game_dialogue(text=trigger_dialogue[trigger])
 
@@ -116,20 +120,35 @@ def main():
                 # Wrap up event
                 time.sleep(2)
                 clear_screen()
+                game_state.update_progress(amount=25)
                 show_gameplay_frame_static(trigger_static='none', dog_state='happy', game_state=game_state)
                 show_game_dialogue(text="Wow! I feel a lot better!")
+                time.sleep(1)
+
+                return "continue"
 
             # Generate events
-            play_triggers()
-            #play_triggers()
+            for i in range(4):
+                result = play_triggers()
+                if result == 'anxiety_too_high':
+                    break
+                if game_state.progress >= 100:
+                    break
 
-            break
 
         elif choice == GAME_KEYS['quit']:
             clear_screen()
             show_game_intro_frame(dog_state="happy")
             show_game_dialogue(text="Thanks for playing!")
             break
+
+    # End the game based on the outcome
+    if game_state.progress >= 100:
+        print("You win!")
+        print("Play again?")
+    elif game_state.anxiety >= 100:
+        print("You lose!")
+        print("Play again?")
 
 
 if __name__ == "__main__":

@@ -246,19 +246,20 @@ triggers_animated = {
     ]
 }
 
-for i in triggers_animated['bird']:
-    print(i)
 
 
 
-
-
-
-
-
-
-
-
+game_lose_animated = [
+    """
+     ________________
+    |    + PET +    |                                                                                                   
+    |   AMBULANCE   |              /\\_/\\                                                
+    ||[][][][][][]|+|__           ( @.@ )                                               
+    ||____________|    |           \\___/                                                
+    |__________________|            |   |                                          
+     O              O              /|   |\\                                               
+    """
+]
 
 
 
