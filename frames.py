@@ -20,6 +20,8 @@ def animate_dog(dog_state, animation, duration, speed, game_state):
         frames = dog_reactions['ray_gun']
     elif animation == 'game_over':
         frames = game_over_animated
+    elif animation == 'you_win':
+        frames = you_win_animated
 
     for i in range(0, duration):
         for frame in frames:

@@ -31,7 +31,7 @@ class GameState:
         self.unused_reactions = self.available_reactions.copy()
         reaction_list = []
 
-        for i in range(2):  # Will change to 4 when we have enough reactions
+        for i in range(2):  # Will change to 4 when there are enough reactions
             self.current_reactions = random.choice(self.unused_reactions)
             reaction_list.append(self.current_reactions)
             self.unused_reactions.remove(self.current_reactions)
@@ -77,7 +77,7 @@ class GameState:
     
     def reset_anxiety(self):
         """Randomly select a starting point for anxiety.  Not every day is a good day"""
-        self.anxiety = random.randint(90, 95)
+        self.anxiety = random.randint(1, 50)
         return self.anxiety
     
     def reset_courage(self):

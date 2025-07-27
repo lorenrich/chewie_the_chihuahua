@@ -86,7 +86,6 @@ def main():
 
         return "continue"
     while True:
-        '''
         # Show title screen (brute force method for now)
         print(dog_title_screen)
         show_game_outline()
@@ -102,7 +101,6 @@ def main():
         show_game_intro_frame(dog_state="scared")
         show_game_dialogue(text=intro_2)
         time.sleep(1)
-        '''
 
         # Ask user to begin gameplay
         clear_screen()
@@ -127,29 +125,31 @@ def main():
 
             # Main game loop
             while game_state.progress < 100 and game_state.anxiety < 100:
-                # Generate events
+                # Player loses
                 for i in range(4):
                     result = play_triggers()
                     if result == 'anxiety_too_high':
                         clear_screen()
                         show_gameplay_frame_static(dog_state='woozy', trigger_static='none', game_state=game_state)
-                        show_game_dialogue(text="""...I...I don't feel so well""")
+                        show_game_dialogue(text=game_over)
                         animate_dog(dog_state='none', animation="game_over", duration=1, speed=1, game_state=game_state)
-                        show_game_dialogue(text="""PARAMEDIC: Help is on the way!\n\nPlay again?""")
+                        show_game_dialogue(text=game_over_2)
                         play_again = get_user_input([GAME_KEYS['start'], GAME_KEYS['quit']])
                         if play_again == GAME_KEYS['quit']:
                             return
                         break
                     if game_state.progress >= 100:
-                        break
+                        break 
 
                 if result == 'anxiety_too_high':
                     break
 
-
+            # Player wins
             if game_state.progress >= 100:
-                print("You win!")
-                print("Play again?")
+                clear_screen()
+                show_gameplay_frame_static(dog_state='happy', trigger_static='none', game_state=game_state)
+                animate_dog(dog_state='none', animation='you_win', duration=1, speed=1, game_state=game_state)
+                show_game_dialogue(text=you_win)
                 play_again = get_user_input([GAME_KEYS['start'], GAME_KEYS['quit']])
                 if play_again == GAME_KEYS['quit']:
                     break

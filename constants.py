@@ -27,9 +27,5 @@ dog_states = {
 }
 
 BARKING_LOOP = 2
-BARKING_SPEED = 0.3
-
-# Note, not used.  These are currently consistent across functions.
-FIREWORK_SPEED = 0.75
-BIRD_SPEED = 0.75
+BARKING_SPEED = 0.1
 
