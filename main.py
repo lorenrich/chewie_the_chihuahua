@@ -74,7 +74,9 @@ def main():
 
             # Play trigger #1
             clear_screen()
-            show_gameplay_frame_static(trigger_static='fireworks', dog_state="scared")
+            animate_trigger(animation='fireworks', speed=0.75)
+            clear_screen()
+            show_gameplay_frame_static(trigger_static='fireworks', dog_state='scared')
             show_game_dialogue(text=trigger_dialogue['fireworks'])
 
             break

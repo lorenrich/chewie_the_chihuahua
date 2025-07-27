@@ -20,15 +20,24 @@ def animate_dog(dog_state, animation, duration, speed, trigger):
                 os.system('cls')
             else:
                 os.system('clear')
-            show_gameplay_frame_animated(trigger, dog_state)
+            show_gameplay_frame_animated_dog(dog_state)
             print(frame)
             show_game_outline()
             time.sleep(speed)
 
-def get_indentation_need(text_block, indent_dict, base_indent=0):
-    """Manually calculate how to center frame drawings for consistency on screen"""
-    line_length = text_block.split('\n')
-    return indent_dict.get(line_length, " " * base_indent)
+def animate_trigger(animation, speed):
+    frames = triggers_animated[animation]
+
+    for frame in frames:
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('clear')
+        show_gameplay_frame_animated_trigger()
+        print(frame)
+        print(render_dog(dog_state='none'))
+        show_game_outline()
+        time.sleep(speed)
 
 
 class GameFrame:
@@ -45,7 +54,7 @@ class GameFrame:
         for i in range(0, lines):
           self.add_line("")
 
-    def add_multi_line_block(self, text_block: str, center=True):
+    def add_multi_line_block(self, text_block: str, center=False):
         lines = text_block.split('\n')
         for line in lines:
             self.add_line(line, center=center)
@@ -108,7 +117,7 @@ def show_game_intro_frame(dog_state):
     frame.add_line(text=game_outline)
     frame.add_padding(13)
     dog_render = render_dog(dog_state)
-    frame.add_multi_line_block(text_block=dog_render, center=True)
+    frame.add_multi_line_block(text_block=dog_render, center=False)
     frame.add_line(text=game_outline)
     frame.render()
 
@@ -127,21 +136,20 @@ def show_gameplay_frame_static(trigger_static, dog_state):
     frame.add_game_stat(type=progress_bar)
     frame.add_game_stat(type=anxiety_bar)
     frame.add_game_stat(type=courage_bar)
-    frame.add_padding(1)
 
     # Game event (trigger)
-    frame.add_multi_line_block(text_block=trigger_drawing, center=True)
+    frame.add_padding(1)
+    frame.add_multi_line_block(text_block=trigger_drawing, center=False)
 
     # Dog
-    frame.add_padding(1)
     dog_render = render_dog(dog_state)
-    frame.add_multi_line_block(text_block=dog_render, center=True)
+    frame.add_multi_line_block(text_block=dog_render, center=False)
     frame.add_line(text=game_outline)
 
     frame.render()
 
-def show_gameplay_frame_animated(trigger, dog_state):
-    """Standard game screen, animated dog and trigger"""
+def show_gameplay_frame_animated_dog(dog_state):
+    """Standard game screen, animated dog"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     
     # Top of frame with game stats
@@ -151,10 +159,20 @@ def show_gameplay_frame_animated(trigger, dog_state):
     frame.add_game_stat(type=courage_bar)
     frame.add_padding(2)
 
-    # Game event (trigger)
-    frame.add_multi_line_block(text_block="", center=True)
-    frame.add_padding(7) # Change back to 1 once you start passing actual trigger drawings
+    # Add spacing for game event (trigger)
+    frame.add_padding(8)
 
-    # Because we have to print each frame of the animation, we will call the function to animate the dog separately to prevent rendering it twice
+    frame.render()
+
+def show_gameplay_frame_animated_trigger():
+    """Standard game screen, animated trigger"""
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    
+    # Top of frame with game stats
+    frame.add_line(text=game_outline)
+    frame.add_game_stat(type=progress_bar)
+    frame.add_game_stat(type=anxiety_bar)
+    frame.add_game_stat(type=courage_bar)
+    frame.add_padding(1)
 
     frame.render()

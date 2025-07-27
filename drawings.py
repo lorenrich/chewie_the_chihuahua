@@ -18,12 +18,12 @@ def render_dog(dog_state):
     indicator = dog_states[dog_state]["indicator"]
 
     dog_frame = f"""
-  {indicator}
- /\\_/\\
- ( {eyes}.{eyes} )
- \\___/
-  |   |
- /|   |\\
+                                     {indicator}                                                   
+                                   /\\_/\\                                                
+                                  ( {eyes}.{eyes} )                                               
+                                   \\___/                                                
+                                   |   |                                                
+                                  /|   |\\                                               
     """
     return dog_frame
 
@@ -32,32 +32,30 @@ def render_dog(dog_state):
 def get_walking_frames(dog_state):
     eyes = dog_states[dog_state]['eyes']
     indicator = dog_states[dog_state]["indicator"]
-    indent_calc = (SCREEN_WIDTH //2) - 2
-    indent = " " * indent_calc
     return [
     f"""
-{indent}     {indicator}
-{indent}   /\\_/\\
-{indent}  ( {eyes}.{eyes} )
-{indent}   \\___/
-{indent}   |   |
-{indent}  /|   |\\
+                                     {indicator}                                                   
+                                   /\\_/\\                                                
+                                  ( {eyes}.{eyes} )                                               
+                                   \\___/                                                
+                                   |   |                                                
+                                  /|   |\\                                              
     """,
     f"""
-{indent}     {indicator}
-{indent}   /\\_/\\
-{indent}  ( {eyes}.{eyes} )
-{indent}   \\___/
-{indent}   |   |
-{indent}  /    |\\
+                                     {indicator}                                                   
+                                   /\\_/\\                                                
+                                  ( {eyes}.{eyes} )                                               
+                                   \\___/                                                
+                                   |   |                                                
+                                  /    |\\                                              
     """,
     f"""
-{indent}     {indicator}
-{indent}   /\\_/\\
-{indent}  ( {eyes}.{eyes} )
-{indent}   \\___/
-{indent}   |   |
-{indent}  |\\   /
+                                     {indicator}                                                   
+                                   /\\_/\\                                                
+                                  ( {eyes}.{eyes} )                                               
+                                   \\___/                                                
+                                   |   |                                                
+                                   |\\  /                                               
     """
 ]
 
@@ -123,18 +121,72 @@ barking = [
 triggers_static = {
     'none': '',
     'fireworks': f"""
-                \\     |    /       \\ /                                    
-                 \\    |   /        / \\                                    
-      \\ /         \\   |  /                                                
-      / \\        ----   ----                                              
-                   /  |  \\                                                
-                  /   |   \\  BOOM!                                        
-                 /    |    \\                                              
+   \\ /              \\     |    /       \\ /                                
+   / \\               \\    |   /        / \\                                
+          \\ /         \\   |  /                                            
+          / \\        ----   ----                                          
+                       /  |  \\                                            
+                      /   |   \\  BOOM!      \\ /                           
+                     /    |    \\            / \\                           
     """
 }
 
 
 # Trigger frames, animated
+triggers_animated = {
+    'fireworks': ["""
+    \\ /                                                                   
+    / \\  pop!                                                              
+                                                                          
+                                                                          
+                                                                          
+                                             \\ /                          
+                                             / \\  pop!                    
+    """,
+    """
+    \\ /                                 \\ /                               
+    / \\                                 / \\  pop!                         
+           \\ /                                                            
+           / \\ pop!                                                       
+                                                                          
+                                             \\ /                          
+                                             / \\                          
+    """,
+    """
+    \\ /              \\     |    /       \\ /                               
+    / \\               \\    |   /        / \\                               
+           \\ /         \\   |  /                                           
+           / \\        ----   ----                                         
+                        /  |  \\                                           
+                       /   |   \\  BOOM!      \\ /                          
+                      /    |    \\            / \\                          
+    """]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 blowing_leaf = [
     """
        /\\
@@ -156,36 +208,6 @@ blowing_leaf = [
         |      |
          \\____/
             |
-    """
-]
-
-fireworks = [
-    """
-           
-            
-     \\ /    
-     / \\
-     pop!        
-            
-           
-    """,
-    """
-                             \\ / pop!
-                             / \\
-     \\ /
-     / \\
-             
-           
-           
-    """,
-    """
-           \\    |    /       \\ /
-            \\   |   /        / \\
-     \\ /     \\  |  /
-     / \\   ----   ----
-             /  |  \\
-            /   |   \\  BOOM!
-           /    |    \\ 
     """
 ]
 
