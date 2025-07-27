@@ -77,7 +77,7 @@ class GameState:
     
     def reset_anxiety(self):
         """Randomly select a starting point for anxiety.  Not every day is a good day"""
-        self.anxiety = random.randint(0, 50)
+        self.anxiety = random.randint(90, 95)
         return self.anxiety
     
     def reset_courage(self):

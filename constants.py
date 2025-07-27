@@ -22,7 +22,8 @@ dog_states = {
     "title": {"eyes": "o", "indicator": ""},
     "happy": {"eyes": "^", "indicator": ""},
     "scared": {"eyes": "0", "indicator": "!"},
-    "dead": {"eyes": "x", "indicator": "X"}
+    "dead": {"eyes": "x", "indicator": "X"},
+    'woozy': {"eyes": "@", 'indicator': "~"}
 }
 
 BARKING_LOOP = 2
