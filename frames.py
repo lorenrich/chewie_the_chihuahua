@@ -5,7 +5,8 @@ from dialogue import *
 from drawings import *
 from game_stats import *
 
-def animate_dog(dog_state, animation, duration, speed):
+
+def animate_dog(dog_state, animation, duration, speed, game_state):
     eyes = dog_states[dog_state]['eyes']
     indicator = dog_states[dog_state]["indicator"]
 
@@ -13,8 +14,8 @@ def animate_dog(dog_state, animation, duration, speed):
         frames = get_walking_frames(dog_state)
     elif animation == "running":
         frames = get_walking_frames(dog_state)
-    elif animation == 'barking':
-        frames = dog_reactions['barking']
+    elif animation == 'bark':
+        frames = dog_reactions['bark']
     elif animation == 'ray_gun':
         frames = dog_reactions['ray_gun']
 
@@ -24,12 +25,12 @@ def animate_dog(dog_state, animation, duration, speed):
                 os.system('cls')
             else:
                 os.system('clear')
-            show_gameplay_frame_animated_dog(dog_state)
+            show_gameplay_frame_animated_dog(dog_state, game_state)
             print(frame)
             show_game_outline()
             time.sleep(speed)
 
-def animate_trigger(animation, speed):
+def animate_trigger(animation, speed, game_state):
     frames = triggers_animated[animation]
 
     for frame in frames:
@@ -37,7 +38,7 @@ def animate_trigger(animation, speed):
             os.system('cls')
         else:
             os.system('clear')
-        show_gameplay_frame_animated_trigger()
+        show_gameplay_frame_animated_trigger(game_state)
         print(frame)
         print(render_dog(dog_state='none'))
         show_game_outline()
@@ -130,16 +131,16 @@ def show_game_dialogue(text):
     frame.add_padding(1)
     frame.character_speech(text, DOG_SPEECH_SPEED, center=False)
 
-def show_gameplay_frame_static(trigger_static, dog_state):
+def show_gameplay_frame_static(trigger_static, dog_state, game_state):
     """Standard game screen, static dog"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     trigger_drawing = triggers_static[trigger_static]
     
     # Top of frame with game stats
     frame.add_line(text=game_outline)
-    frame.add_game_stat(type=progress_bar)
-    frame.add_game_stat(type=anxiety_bar)
-    frame.add_game_stat(type=courage_bar)
+    frame.add_game_stat(type=game_state.get_progress_bar())
+    frame.add_game_stat(type=game_state.get_anxiety_bar())
+    frame.add_game_stat(type=game_state.get_courage_bar())
 
     # Game event (trigger)
     frame.add_padding(1)
@@ -152,15 +153,15 @@ def show_gameplay_frame_static(trigger_static, dog_state):
 
     frame.render()
 
-def show_gameplay_frame_animated_dog(dog_state):
+def show_gameplay_frame_animated_dog(dog_state, game_state):
     """Standard game screen, animated dog"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     
     # Top of frame with game stats
     frame.add_line(text=game_outline)
-    frame.add_game_stat(type=progress_bar)
-    frame.add_game_stat(type=anxiety_bar)
-    frame.add_game_stat(type=courage_bar)
+    frame.add_game_stat(type=game_state.get_progress_bar())
+    frame.add_game_stat(type=game_state.get_anxiety_bar())
+    frame.add_game_stat(type=game_state.get_courage_bar())
     frame.add_padding(2)
 
     # Add spacing for game event (trigger)
@@ -168,15 +169,15 @@ def show_gameplay_frame_animated_dog(dog_state):
 
     frame.render()
 
-def show_gameplay_frame_animated_trigger():
+def show_gameplay_frame_animated_trigger(game_state):
     """Standard game screen, animated trigger"""
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     
     # Top of frame with game stats
     frame.add_line(text=game_outline)
-    frame.add_game_stat(type=progress_bar)
-    frame.add_game_stat(type=anxiety_bar)
-    frame.add_game_stat(type=courage_bar)
+    frame.add_game_stat(type=game_state.get_progress_bar())
+    frame.add_game_stat(type=game_state.get_anxiety_bar())
+    frame.add_game_stat(type=game_state.get_courage_bar())
     frame.add_padding(1)
 
     frame.render()

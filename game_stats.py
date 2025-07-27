@@ -1,17 +1,6 @@
 import random
 from dialogue import reaction_menu
 
-# Beginning stats
-progress = 0
-anxiety = 25
-courage = 25
-
-# Stat bars
-progress_bar = "Progress " + "█" * (progress // 10) + "░" * (10 - progress // 10) + f" {progress}%"
-anxiety_bar = "Anxiety  " + "█" * (anxiety // 10) + "░" * (10 - anxiety // 10) + f" {anxiety}%"
-courage_bar = "Courage  " + "█" * (courage // 10) + "░" * (10 - courage // 10) + f" {courage}%"
-
-
 trigger_stats = {
     'bird': 10,
     'blowing_leaf': 20,
@@ -19,7 +8,7 @@ trigger_stats = {
 }
 
 reaction_stats = {
-    'barking': {'anxiety': -20, 'courage': 20},
+    'bark': {'anxiety': -20, 'courage': 20},
     'ray_gun': {'anxiety':  -50, 'courage': 40}
 }
 
@@ -28,6 +17,10 @@ class GameState:
         self.current_dog_event = None
         self.available_triggers = ['fireworks', 'bird']
         self.available_reactions = ['bark', 'ray_gun']
+        self.progress = 0
+        self.anxiety = 25
+        self.courage = 25
+
         
     def generate_new_trigger(self):
         self.current_dog_event = random.choice(self.available_triggers)
@@ -48,3 +41,42 @@ class GameState:
         menu += f"B. {reaction_menu[reaction_list[1]]}\n"
         
         return menu, reaction_list[0], reaction_list[1]
+    
+    def update_progress(self, amount):
+        self.progress += amount
+        return self.progress
+    
+    def update_anxiety(self, amount):
+        self.anxiety += amount
+        if self.anxiety < 0:
+            self.anxiety = 0
+        return self.anxiety
+    
+    def update_courage(self, amount):
+        self.courage += amount
+        if self.courage < 0:
+            self.courage = 0
+        return self.courage
+    
+    def get_progress_bar(self):
+        return "Progress " + "█" * (self.progress // 10) + "░" * (10 - self.progress // 10) + f" {self.progress}%"
+    
+    def get_anxiety_bar(self):
+        return "Anxiety  " + "█" * (self.anxiety // 10) + "░" * (10 - self.anxiety // 10) + f" {self.anxiety}%"
+        
+    def get_courage_bar(self):    
+        return "Courage  " + "█" * (self.courage // 10) + "░" * (10 - self.courage // 10) + f" {self.courage}%"
+
+    def reset_progress(self):
+        self.progress = 0
+        return self.progress
+    
+    def reset_anxiety(self):
+        """Randomly select a starting point for anxiety.  Not every day is a good day"""
+        self.anxiety = random.randint(1, 5)
+        return self.anxiety
+    
+    def reset_courage(self):
+        """Randomly select a starting point for courage.  Not every day is a good day"""
+        self.courage = random.randint(1, 50)
+        return self.courage

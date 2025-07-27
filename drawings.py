@@ -147,7 +147,15 @@ ray_gun = [
 
 # Trigger frames, static
 triggers_static = {
-    'none': '',
+    'none': """
+
+
+
+
+
+
+
+""",
     'fireworks': f"""
    \\ /              \\     |    /       \\ /                                
    / \\               \\    |   /        / \\                                
