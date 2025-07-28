@@ -366,6 +366,24 @@ triggers_animated = {
 """
 
                                                                              
+                                                                             
+                                                                             
+                                             --Are you sure it's not a rat? 
+
+
+""",
+"""
+
+                                                                             
+                                                     --Can we pet your dog? 
+                                                                             
+                                                                             
+
+
+""",
+"""
+
+                                                                             
                                                      --Can we pet your dog? 
                                                                              
                                                                              

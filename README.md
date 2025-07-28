@@ -1,10 +1,8 @@
 Chewie the Chihuahua
 
 **TLDR (too long didn't read)**
+![alt text](Chewie.png)
 Chewie is a command line Chihuahua who struggles with anxiety.  Take her for a walk and successfully navigate the anxiety triggers she encounters, but be careful!  Every choice has consequences, some better than others.
-
-**Installation**
-need...
 
 **How to Play**
 - need......(link to hosting site?)
