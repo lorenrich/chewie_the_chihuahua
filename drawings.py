@@ -329,6 +329,24 @@ triggers_animated = {
 """,
 """
 
+                                                   --Aww! Look at that dog! 
+                                                                            
+                                                                             
+                                                                             
+
+
+""",
+"""
+
+                                                                             
+                                                                             
+                                                            --What a cutie! 
+                                                                             
+
+
+""",
+"""
+
                                                                              
                                                                              
                                                             --What a cutie! 

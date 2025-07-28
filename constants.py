@@ -15,7 +15,7 @@ WALKING_STEPS = 3
 RUNNING_SPEED = 0.1
 RUNNING_STEPS = 7
 
-DOG_SPEECH_SPEED = 0.01  # Once ready for actual gameplay, change to 0.05 
+DOG_SPEECH_SPEED = 0.05  # Once ready for actual gameplay, change to 0.05 
 
 dog_states = {
     "none": {"eyes": "o", "indicator": ""},
