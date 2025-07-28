@@ -7,7 +7,7 @@ Chewie the Chihuahua
 Chewie is a command line Chihuahua who struggles with anxiety.  Take her for a walk and successfully navigate the anxiety triggers she encounters, but be careful!  Every choice has consequences, some better than others.
 
 **How to Play**
-- This program is housed within a codebase of GitHub.  Within the repo, click the green "Code" button and select the active codebase
+- This program is housed within a codebase of GitHub.  If you aren't already in the codebase displayed in the VS Code web browser, click the green "Code" button and open a new one
 - This will open a VS Code web browser.  Navigate to the "TERMINAL" on the bottom half of your screen.
 - In the terminal, type "python main.py" and press Enter
 - It is recommended to adjust the size of your terminal window's height to see the full game screen
