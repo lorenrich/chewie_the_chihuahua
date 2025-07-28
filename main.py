@@ -37,7 +37,6 @@ game_state = GameState()
 def main():
     def play_triggers():
         """Generate event, user chooses reaction"""
-
         # Start walking
         clear_screen()
         animate_dog(dog_state='happy', animation="walking", duration=WALKING_STEPS, speed=WALKING_SPEED, game_state=game_state)
@@ -45,7 +44,7 @@ def main():
         # Play trigger
         trigger = game_state.generate_new_trigger()
         clear_screen()
-        animate_trigger(animation=trigger, speed=0.75, game_state=game_state)
+        animate_trigger(animation=trigger, speed=1, game_state=game_state)
         clear_screen()
         game_state.update_anxiety(amount=trigger_stats[trigger])
 
@@ -57,10 +56,10 @@ def main():
         show_game_dialogue(text=trigger_dialogue[trigger])
 
         # Ask user to choose reaction
-        menu, option_a, option_b = game_state.generate_new_reactions()
+        menu, option_a, option_b, option_c = game_state.generate_new_reactions()
         show_game_dialogue(text=menu)
 
-        choice = get_user_input([GAME_KEYS['option_a'], GAME_KEYS['option_b']])
+        choice = get_user_input([GAME_KEYS['option_a'], GAME_KEYS['option_b'], GAME_KEYS['option_c']])
         
         # Play reaction
         if choice == GAME_KEYS['option_a']:
@@ -71,10 +70,17 @@ def main():
             game_state.update_courage(amount=reaction_stats[option_a]['courage'])
         elif choice == GAME_KEYS['option_b']:
             time.sleep(2)
+            
             clear_screen()
             animate_dog(dog_state='none', animation=option_b, duration=2, speed=0.75, game_state=game_state)
             game_state.update_anxiety(amount=reaction_stats[option_b]['anxiety'])
             game_state.update_courage(amount=reaction_stats[option_b]['courage'])
+        elif choice == GAME_KEYS['option_c']:
+            time.sleep(2)
+            clear_screen()
+            animate_dog(dog_state='none', animation=option_c, duration=2, speed=0.75, game_state=game_state)
+            game_state.update_anxiety(amount=reaction_stats[option_c]['anxiety'])
+            game_state.update_courage(amount=reaction_stats[option_c]['courage'])
 
         # Wrap up event
         time.sleep(2)

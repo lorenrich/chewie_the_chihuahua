@@ -24,11 +24,15 @@ trigger_dialogue = {
     "bird": "Is that a hawk?  ...he looks hungry...",
     "child": "Oh no, small child. \nPlease don't want to pet me.  Please don't want to pet me. Please don't want to pet me.",
     "human": "Shoot...scary human...",
-    "other_dog": "Hello other dog.  No, I don't want to be your friend."
+    "other_dog": "Hello other dog.  No, I don't want to be your friend.",
+    "lightning": "Oh no, thunderstorm!",
+    "people": """Please don't want to pet...ah crap.""",
 }
 
 reaction_menu = {
     'bark': 'Bark your head off',
-    'ray_gun': """Shoot 'em with a ray gun"""
+    'ray_gun': """Shoot 'em with a ray gun""",
+    'play_dead': "Play dead",
+    'play_it_cool': "Play it cool"
 }
 

@@ -4,18 +4,22 @@ from dialogue import reaction_menu
 trigger_stats = {
     'bird': 10,
     'blowing_leaf': 20,
-    'fireworks': 30
+    'fireworks': 30,
+    'lightning': 40,
+    'people': 20
 }
 
 reaction_stats = {
     'bark': {'anxiety': -20, 'courage': 20},
-    'ray_gun': {'anxiety':  -50, 'courage': 40}
+    'ray_gun': {'anxiety':  -50, 'courage': 40},
+    'play_dead': {'anxiety': -10, 'courage': 10},
+    'play_it_cool': {'anxiety': -20, 'courage': 30}
 }
 
 class GameState:
     def __init__(self):
         self.current_dog_event = None
-        self.available_triggers = ['fireworks', 'bird']
+        self.available_triggers = ['fireworks', 'bird', 'lightning', 'people']
         self.available_reactions = ['bark', 'ray_gun', 'play_dead', 'play_it_cool']
         self.post_reaction_dialogue = [
     """Wow!  I feel so much better!""",
@@ -23,13 +27,14 @@ class GameState:
     """Thanks...did I mention how much I hate walks?""",
     """Good grief"""
 ]
-        self.progress = 0
-        self.anxiety = 25
-        self.courage = 25
-
+        self.unused_triggers = self.available_triggers.copy()
         
     def generate_new_trigger(self):
-        self.current_dog_event = random.choice(self.available_triggers)
+        """Generate random event but don't allow repeat events"""
+        if not self.unused_triggers:
+            self.unused_triggers = self.available_triggers.copy()
+        self.current_dog_event = random.choice(self.unused_triggers)
+        self.unused_triggers.remove(self.current_dog_event)
         return self.current_dog_event
     
     def generate_new_reactions(self):
@@ -37,7 +42,7 @@ class GameState:
         self.unused_reactions = self.available_reactions.copy()
         reaction_list = []
 
-        for i in range(2):  # Will change to 4 when there are enough reactions
+        for i in range(3):
             self.current_reactions = random.choice(self.unused_reactions)
             reaction_list.append(self.current_reactions)
             self.unused_reactions.remove(self.current_reactions)
@@ -45,12 +50,14 @@ class GameState:
         menu = f"\nWhat should I do?\n"
         menu += f"\nA. {reaction_menu[reaction_list[0]]}\n"
         menu += f"B. {reaction_menu[reaction_list[1]]}\n"
+        menu += f"C. {reaction_menu[reaction_list[2]]}\n"
         
-        return menu, reaction_list[0], reaction_list[1]
+        return menu, reaction_list[0], reaction_list[1], reaction_list[2]
     
     def generate_random_response(self):
         """Choose a dialogue response after each trigger"""
         self.response = random.choice(self.post_reaction_dialogue)
+        return self.response
     
     def update_progress(self, amount):
         self.progress += amount
