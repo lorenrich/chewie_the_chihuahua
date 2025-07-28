@@ -16,7 +16,7 @@ class GameState:
     def __init__(self):
         self.current_dog_event = None
         self.available_triggers = ['fireworks', 'bird']
-        self.available_reactions = ['bark', 'ray_gun']
+        self.available_reactions = ['bark', 'ray_gun', 'play_dead', 'play_it_cool']
         self.post_reaction_dialogue = [
     """Wow!  I feel so much better!""",
     """Glad that's over...""",

@@ -86,9 +86,9 @@ def main():
 
         return "continue"
     while True:
-        # Show title screen (brute force method for now)
-        print(dog_title_screen)
-        show_game_outline()
+        # Show title screen
+        clear_screen()
+        show_title_frame(trigger_static='none', game_state=game_state)
         wait_for_key()
 
         # Draw dog and intro dialogue to the screen

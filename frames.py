@@ -108,10 +108,9 @@ def clear_screen():
 
 # Functions for different game frames
 def show_title_frame():
-    # Not currently used until I fix spacing issue
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     frame.add_padding(2)
-    frame.add_multi_line_block(text_block=render_dog_title("title"), center=False)
+    frame.add_multi_line_block(text_block=dog_frame_title, center=False)
     frame.add_padding(2)
     frame.render()
     input()
@@ -134,6 +133,27 @@ def show_game_dialogue(text):
     frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
     frame.add_padding(1)
     frame.character_speech(text, DOG_SPEECH_SPEED, center=False)
+
+def show_title_frame(trigger_static, game_state):
+    """Title slide"""
+    frame = GameFrame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    trigger_drawing = triggers_static[trigger_static]
+    
+    # Top of frame with game stats
+    frame.add_line(text=game_outline)
+    frame.add_line(text="")
+    frame.add_line(text="")
+    frame.add_line(text="")
+    frame.add_padding(1)
+
+    # Fill trigger space with blank lines
+    frame.add_multi_line_block(text_block=trigger_drawing, center=False)
+
+    # Dog
+    frame.add_multi_line_block(text_block=dog_frame_title, center=False)
+    frame.add_line(text=game_outline)
+
+    frame.render()
 
 def show_gameplay_frame_static(trigger_static, dog_state, game_state):
     """Standard game screen, static dog"""

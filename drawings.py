@@ -2,15 +2,13 @@ import os
 import time
 from constants import *
 
-
-# Dog drawings, static
-dog_title_screen = f"""
-
-      /\\_/\\
-     ( ^.^ )      Chewie the Chihuahua
-      \\___/
-      |   |       Press any key to begin
-     /|   |\\
+dog_frame_title = f"""
+                                                                                                 
+                                   /\\_/\\                                                
+                                  ( ^.^ )         Chewie the Chihuahua                        
+                                   \\___/                                                
+                                   |   |          press any key to start            
+                                  /|   |\\                                               
     """
 
 def render_dog(dog_state):
@@ -110,39 +108,28 @@ dog_reactions = {
                                    |   |__|-- pew! pew!                                 
                                   /|   |\\                                               
     """
+    ],
+    'play_dead': [
+        """
+
+
+        
+                                   /\\_/\\                                                
+                                  ( X.X ) __|__|                                               
+                                   \\___/ __|__|                                                                                 
+"""
+    ],
+    'play_it_cool':[
+        """
+                                                                                                   
+                                   /\\_/\\                                                
+                                  (-●.●-)                                               
+                                   \\___/                                                
+                                   |   |                                 
+                                  /|   |\\                                               
+    """
     ]
 }
-
-
-# Dog reactions to triggers, static and actioned
-ray_gun = [
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|--
-      /|   |
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|-- pew!
-      /|   |\\
-      __________
-    """,
-    """
-       /\\_/\\
-      ( o.o )
-       \\___/
-       |   |__|-- pew! pew!
-      /|   |\\
-      __________
-    """
-]
-
-
 
 
 # Trigger frames, static
